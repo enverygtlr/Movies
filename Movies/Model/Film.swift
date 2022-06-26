@@ -27,7 +27,7 @@ struct Film : Codable {
 
 struct GelenFilmler : Codable {
     let filmler : [Film]
-//    Apideki Search keyi için
+    //    Apideki Search keyi için
     private enum CodingKeys : String , CodingKey {
         case filmler = "Search"
     }
