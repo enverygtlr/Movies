@@ -16,6 +16,7 @@
 		B58DBB092865C90C00608EC4 /* MoviesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58DBB082865C90C00608EC4 /* MoviesTests.swift */; };
 		B58DBB142865C90C00608EC4 /* MoviesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58DBB132865C90C00608EC4 /* MoviesUITests.swift */; };
 		B5C083D82869A87600F18A28 /* MovieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C083D72869A87600F18A28 /* MovieListViewModel.swift */; };
+		B5C083E42869B10600F18A28 /* MoviesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C083E32869B10600F18A28 /* MoviesAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		B58DBB132865C90C00608EC4 /* MoviesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesUITests.swift; sourceTree = "<group>"; };
 		B58DBB152865C90C00608EC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5C083D72869A87600F18A28 /* MovieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModel.swift; sourceTree = "<group>"; };
+		B5C083E32869B10600F18A28 /* MoviesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 		B58DBAF52865C90000608EC4 /* Movies */ = {
 			isa = PBXGroup;
 			children = (
+				B5C083DF2869B0F500F18A28 /* API */,
 				5B51A02F2867A2950066A461 /* Service */,
 				5B51A02C2866F4D50066A461 /* App */,
 				5B51A02B2866F4CD0066A461 /* View */,
@@ -177,6 +180,14 @@
 				B5C083D72869A87600F18A28 /* MovieListViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B5C083DF2869B0F500F18A28 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				B5C083E32869B10600F18A28 /* MoviesAPI.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,6 +324,7 @@
 				B58DBAF72865C90000608EC4 /* MoviesApp.swift in Sources */,
 				5B51A0312867A2BA0066A461 /* DownloaderClient.swift in Sources */,
 				B5C083D82869A87600F18A28 /* MovieListViewModel.swift in Sources */,
+				B5C083E42869B10600F18A28 /* MoviesAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
