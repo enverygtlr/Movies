@@ -19,7 +19,6 @@ struct URLImage: View {
             Image(uiImage: uiimage)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-//                .frame(width: 100, height: 150)
                 .background(Color.gray)
         } else {
           ProgressView()

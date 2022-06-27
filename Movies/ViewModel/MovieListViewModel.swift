@@ -33,19 +33,9 @@ struct TestView: View {
     @ObservedObject var movieListViewModel = MovieListViewModel()
     
     var body: some View {
-        ScrollView {
-            VStack() {
-                Button {
-                    movieListViewModel.downloadMovies(search: "some")
-                } label: {
-                    Text("Button")
-                }
-                ForEach(movieListViewModel.movieList, id: \.self) { movie in
-                    Text(movie.title)
-                    Text(movie.imdbID)
-                }
-            }
-        }
+        Text("Hello \(MoviesAPI.movies(imdbId: "id").url!)")
+        
+        
     }
 }
 
