@@ -18,6 +18,7 @@ enum MoviesAPI {
         var component = URLComponents()
         component.scheme = "https"
         component.host = "omdbapi.com"
+        component.path = "/"
         component.queryItems = pageQuery()
         return component.url
     }

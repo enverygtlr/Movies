@@ -7,11 +7,11 @@
 
 import Foundation
 //film model
-struct Movie : Codable {
+struct Movie : Codable, Hashable {
     
     let title : String
     let year : String
-    let imdbId : String
+    let imdbID : String
     let type : String
     let poster : String
     
@@ -19,7 +19,7 @@ struct Movie : Codable {
         
         case title = "Title"
         case year = "Year"
-        case imdbId = "imdbId"
+        case imdbID = "imdbID"
         case type = "Type"
         case poster = "Poster"
     }
