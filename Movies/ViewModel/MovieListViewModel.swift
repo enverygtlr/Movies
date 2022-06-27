@@ -36,7 +36,7 @@ struct TestView: View {
         ScrollView {
             VStack() {
                 Button {
-                    movieListViewModel.downloadMovies(search: "brother")
+                    movieListViewModel.downloadMovies(search: "some")
                 } label: {
                     Text("Button")
                 }
