@@ -24,7 +24,7 @@ struct MovieListView: View {
                     ForEach(movieListViewModel.movieList, id: \.self) { movie in
                         
                         NavigationLink(
-                            destination: Text("Destination"),
+                            destination:DetailView(imdbId: movie.imdbID),
                             label: {
                                 HStack {
                                     URLImage(urlString: movie.poster)

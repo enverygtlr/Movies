@@ -30,7 +30,7 @@ class DownloaderClient {
         }.resume()
         
     }
-    static func downloadMovieDetails(imdbId:String, completion: @escaping (Result<MovieDetailModel,DownloaderError>)-> Void) {
+     func downloadMovieDetails(imdbId:String, completion: @escaping (Result<MovieDetailModel,DownloaderError>)-> Void) {
           guard let url = MoviesAPI.movies(imdbId: imdbId).url else {
               return completion(.failure(.wrongUrl))
           }
