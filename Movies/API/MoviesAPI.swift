@@ -8,12 +8,11 @@
 import Foundation
 
 enum MoviesAPI {
-    case movies(search: String? = nil, imdbId: String? = nil)
+    case movies(search: String? = nil,imdbId: String? = nil)
     
     private static var apiKey: String {
         "f82a83aa"
     }
-    
     var url: URL? {
         var component = URLComponents()
         component.scheme = "https"
@@ -25,16 +24,16 @@ enum MoviesAPI {
     
     private func pageQuery()-> [URLQueryItem]? {
         switch self {
-        case .movies(search: let searchQuery, imdbId: let imdbId):
+        case .movies(search: let searchQuery,imdbId: let idQuery):
             var queryArray: [URLQueryItem] = [URLQueryItem(name: "apiKey", value: MoviesAPI.apiKey)]
             
             if let searchQuery = searchQuery {
                 queryArray.append(URLQueryItem(name: "s", value: searchQuery))
             }
-            
-            if let imdbId = imdbId {
-                queryArray.append(URLQueryItem(name: "i", value: imdbId))
+            if let idQuery = idQuery {
+                queryArray.append(URLQueryItem(name: "i", value: idQuery))
             }
+
             
             if (!queryArray.isEmpty) {
                 return queryArray
