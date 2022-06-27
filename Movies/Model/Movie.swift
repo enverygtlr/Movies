@@ -7,7 +7,7 @@
 
 import Foundation
 //film model
-struct Film : Codable {
+struct Movie : Codable {
     
     let title : String
     let year : String
@@ -25,10 +25,10 @@ struct Film : Codable {
     }
 }
 
-struct GelenFilmler : Codable {
-    let filmler : [Film]
+struct MovieArray : Codable {
+    let movies : [Movie]
     //    Apideki Search keyi için
     private enum CodingKeys : String , CodingKey {
-        case filmler = "Search"
+        case movies = "Search"
     }
 }
