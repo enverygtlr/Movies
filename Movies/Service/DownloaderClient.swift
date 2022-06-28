@@ -30,6 +30,20 @@ class DownloaderClient {
         }.resume()
         
     }
+     func downloadMovieDetails(imdbId:String, completion: @escaping (Result<MovieDetailModel,DownloaderError>)-> Void) {
+          guard let url = MoviesAPI.movies(imdbId: imdbId).url else {
+              return completion(.failure(.wrongUrl))
+          }
+          URLSession.shared.dataTask(with: url) { data, response,error in
+              guard let data = data,  error == nil else {
+                  return  completion(.failure(.dataNotArrived))
+              }
+              guard let movieDetailResponse =  try? JSONDecoder().decode(MovieDetailModel.self, from: data) else {
+                  return completion(.failure(.dataNotProcessed))
+              }
+              completion(.success(movieDetailResponse))
+          }.resume()
+      }
 }
 // hatalar için enum
 enum DownloaderError: Error {
