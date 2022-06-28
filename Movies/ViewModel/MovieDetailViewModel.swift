@@ -18,7 +18,10 @@ class MovieDetailViewModel:ObservableObject {
             case .failure(let error) :
                 print(error)
             case .success(let movieDetail):
-                self.movieDetails = NewMovieDetailModel(detail: movieDetail)
+                DispatchQueue.main.async {
+                    self.movieDetails = NewMovieDetailModel(detail: movieDetail)
+                }
+                
                 
             }
         }
