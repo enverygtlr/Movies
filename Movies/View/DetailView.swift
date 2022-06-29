@@ -6,33 +6,41 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct DetailView: View {
     let imdbId: String
     @ObservedObject var vm = MovieDetailViewModel()
+    
     var body: some View {
         
-        VStack(alignment: .leading, spacing: 5) {
-            HStack (alignment: .center){
-                Spacer()
-                URLImage(urlString: vm.movieDetails?.poster ?? "").frame(width: UIScreen.main.bounds.width*0.5, height: UIScreen.main.bounds.height*0.4, alignment: .center)
-                Spacer()
+        ScrollView {
+            VStack(alignment: .leading, spacing: 5) {
+                HStack (alignment: .center){
+                    Spacer()
+                    KFImage(URL(string: vm.movieDetails?.poster ?? "")).resizable().frame(width: UIScreen.main.bounds.width*0.8, height: UIScreen.main.bounds.height*0.5, alignment: .center).cornerRadius(10.0)
+    //                URLImage(urlString: vm.movieDetails?!).frame(width: UIScreen.main.bounds.width*0.5, height: UIScreen.main.bounds.height*0.4, alignment: .center)
+                    Spacer()
+                }
+              
+                Text("\(vm.movieDetails?.title ?? "")").font(.title3).bold()
+                    .padding()
+                Text("Year: \(vm.movieDetails?.year ?? "")").font(.subheadline)
+                    .padding()
+                Text("Plot: \(vm.movieDetails?.plot ?? "")").font(.subheadline)
+                    .padding()
+                Text("\(vm.movieDetails?.actors ?? "")").font(.subheadline)
+                    .padding()
+                Text("\(vm.movieDetails?.director ?? "")").font(.subheadline)
+                    .padding()
             }
-//            Text(vm.movieDetails?.poster ?? "deneme")
-            Text("\(vm.movieDetails?.title ?? "")").font(.subheadline)
-                .padding()
-            Text("Year: \(vm.movieDetails?.year ?? "")").font(.subheadline)
-                .padding()
-            Text("Plot: \(vm.movieDetails?.plot ?? "")").font(.subheadline)
-                .padding()
-            Text("\(vm.movieDetails?.actors ?? "")").font(.subheadline)
-                .padding()
-            Text("\(vm.movieDetails?.director ?? "")").font(.subheadline)
-                .padding()
-        }.padding()
-        .onAppear {
-            self.vm.getMovieDetails(imdbId: imdbId)
+            .padding()
+            .onAppear {
+                self.vm.getMovieDetails(imdbId: imdbId)
+                
         }
+        }
+     
     }
 }
 
