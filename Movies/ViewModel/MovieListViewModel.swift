@@ -11,9 +11,9 @@ import SwiftUI
 class MovieListViewModel: ObservableObject {
     @Published var movieList: [Movie] = []
     
-    func downloadMovies(search: String)
+    func downloadMovies(search: String, contentType: String? = nil)
     {
-        DownloaderClient.downloadMovies(search: search) { result in
+        DownloaderClient.downloadMovies(search: search, contentType: contentType) { result in
             switch result {
                 case .success(let movieList):
                     if let movieList = movieList {

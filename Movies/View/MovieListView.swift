@@ -12,15 +12,44 @@ struct MovieListView: View {
     
     @State var searchText = ""
     @State var isSearching = false
+    @State var showFilters = false
+    @State var filters = MovieFilter()
+    
+    struct MovieFilter: Equatable {
+        
+        enum MovieTypes: Equatable {
+            case all
+            case movies
+            case series
+            
+            var typeString: String? {
+                switch self {
+                case .all:
+                    return nil
+                case .movies:
+                    return "movie"
+                case .series:
+                    return "series"
+                }
+            }
+            
+            var id: Self { self }
+
+        }
+        var typeFilter: MovieTypes = .all
+        
+        var id: Self { self }
+
+    }
     
     var body: some View {
         NavigationView {
             VStack{
                 SearchBar(searchText: $searchText, isSearching: $isSearching) {
-                    movieListViewModel.downloadMovies(search: searchText)
+                    movieListViewModel.downloadMovies(search: searchText, contentType: filters.typeFilter.typeString)
                 }
                 
-                List() {
+                List() {                    
                     ForEach(movieListViewModel.movieList, id: \.self) { movie in
                         
                         NavigationLink(
@@ -50,6 +79,16 @@ struct MovieListView: View {
                 Spacer()
             }
             .navigationTitle("Movies")
+            .toolbar {
+                Button {
+                    showFilters = true
+                } label: {
+                    Image(systemName: "doc.text.magnifyingglass")
+                }
+                .sheet(isPresented: $showFilters) {
+                    FilterView(filters: $filters)
+                }
+            }
         }
     }
 }

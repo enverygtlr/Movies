@@ -8,7 +8,7 @@
 import Foundation
 
 enum MoviesAPI {
-    case movies(search: String? = nil,imdbId: String? = nil)
+    case movies(search: String? = nil,imdbId: String? = nil, contentType: String? = nil)
     
     private static var apiKey: String {
         "f82a83aa"
@@ -24,7 +24,7 @@ enum MoviesAPI {
     
     private func pageQuery()-> [URLQueryItem]? {
         switch self {
-        case .movies(search: let searchQuery,imdbId: let idQuery):
+        case .movies(search: let searchQuery,imdbId: let idQuery, contentType: let contentType):
             var queryArray: [URLQueryItem] = [URLQueryItem(name: "apiKey", value: MoviesAPI.apiKey)]
             
             if let searchQuery = searchQuery {
@@ -32,6 +32,9 @@ enum MoviesAPI {
             }
             if let idQuery = idQuery {
                 queryArray.append(URLQueryItem(name: "i", value: idQuery))
+            }
+            if let contentType = contentType {
+                queryArray.append(URLQueryItem(name: "type", value: contentType))
             }
 
             

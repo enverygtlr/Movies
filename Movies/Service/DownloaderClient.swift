@@ -10,9 +10,9 @@ import Foundation
 class DownloaderClient {
     
     // aranacak film ve bittikten sonra ne olacağını main threadi bloklamamak için escape succes ve failure verdik
-    static func downloadMovies(search: String? = nil, completion: @escaping (Result<[Movie]?,DownloaderError>) -> Void ) {
+    static func downloadMovies(search: String? = nil, contentType: String? = nil, completion: @escaping (Result<[Movie]?,DownloaderError>) -> Void ) {
         
-        guard let url = MoviesAPI.movies(search: search).url else {
+        guard let url = MoviesAPI.movies(search: search, contentType: contentType).url else {
             return completion(.failure(.wrongUrl))
         }
         print("imdb URL = \(url)")
