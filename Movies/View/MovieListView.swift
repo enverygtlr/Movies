@@ -14,8 +14,10 @@ struct MovieListView: View {
     @State var isSearching = false
     @State var lastQuery: String? = nil
     @State var showFilters = false
+    @State private var showingAlert = false
+
     @State var filters = MovieFilter()
-    @State var popoverSize = CGSize(width: 300, height: 300)
+    @State var popoverSize = CGSize(width: 300, height: 250)
     
     struct MovieFilter: Equatable {
         
@@ -46,7 +48,6 @@ struct MovieListView: View {
     
     var body: some View {
         NavigationView {
-            
             ZStack {
                 WithPopover(
                     showPopover: $showFilters,
@@ -55,13 +56,25 @@ struct MovieListView: View {
                         Text("Tap")
                     },
                     popoverContent: {
-                        FilterView(filters: $filters)
+                        FilterView(filters: $filters) {
+                            movieListViewModel.downloadMovies(search: searchText, contentType: filters.typeFilter.typeString)
+                        }
                     })
                 
                 VStack {
                     SearchBar(searchText: $searchText, isSearching: $isSearching) {
+                        if searchText.count < 3 {
+                            showingAlert = true
+                        }
+                        
                         movieListViewModel.downloadMovies(search: searchText, contentType: filters.typeFilter.typeString)
-                    }
+                    }.alert(isPresented: $showingAlert, content: {
+                        Alert(
+                            title: Text("Error"),
+                            message: Text("Enter words which have more than three letters."),
+                            dismissButton: .default(Text("Got it!"))
+                        )
+                    })
                     
                     List() {
                         ForEach(movieListViewModel.movieList, id: \.self) { movie in
