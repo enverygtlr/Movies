@@ -15,7 +15,6 @@ struct MovieListView: View {
     @State var lastQuery: String? = nil
     @State var showFilters = false
     @State private var showingAlert = false
-
     @State var filters = MovieFilter()
     @State var popoverSize = CGSize(width: 300, height: 250)
     
@@ -36,14 +35,10 @@ struct MovieListView: View {
                     return "series"
                 }
             }
-            
             var id: Self { self }
-            
         }
         var typeFilter: MovieTypes = .all
-        
         var id: Self { self }
-        
     }
     
     var body: some View {
@@ -66,8 +61,8 @@ struct MovieListView: View {
                         if searchText.count < 3 {
                             showingAlert = true
                         }
-                        
                         movieListViewModel.downloadMovies(search: searchText, contentType: filters.typeFilter.typeString)
+                   
                     }.alert(isPresented: $showingAlert, content: {
                         Alert(
                             title: Text("Error"),

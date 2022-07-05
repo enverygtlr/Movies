@@ -34,7 +34,6 @@ struct FilterView: View {
             })
             .foregroundColor(.blue)
             .padding(30)
-            
         }
         .padding()
     }
