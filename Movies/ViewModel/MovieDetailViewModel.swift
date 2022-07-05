@@ -21,16 +21,10 @@ class MovieDetailViewModel:ObservableObject {
                 DispatchQueue.main.async {
                     self.movieDetails = NewMovieDetailModel(detail: movieDetail)
                 }
-                
-                
             }
         }
     }
-    
-    
-    
 }
-
 struct NewMovieDetailModel {
     
     let detail : MovieDetailModel

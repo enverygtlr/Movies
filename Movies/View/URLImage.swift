@@ -21,7 +21,7 @@ struct URLImage: View {
                 .aspectRatio(contentMode: .fit)
                 .background(Color.gray)
         } else {
-          ProgressView()
+            Image("no_image").resizable()
             .onAppear {
                 fetchData()
             }
