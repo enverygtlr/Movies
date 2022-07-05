@@ -11,19 +11,17 @@ import SwiftUI
 class MovieListViewModel: ObservableObject {
     @Published var movieList: [Movie] = []
     
-    func downloadMovies(search: String, contentType: String? = nil)
-    {
+    func downloadMovies(search: String, contentType: String? = nil) {
         DownloaderClient.downloadMovies(search: search, contentType: contentType) { result in
             switch result {
-                case .success(let movieList):
-                    if let movieList = movieList {
-                        DispatchQueue.main.async {
-                            self.movieList = movieList
-                        }
+            case .success(let movieList):
+                if let movieList = movieList {
+                    DispatchQueue.main.async {
+                        self.movieList = movieList
                     }
-                
-                case .failure(let error):
-                    print(error)
+                }
+            case .failure(let error):
+                print(error)
             }
         }
     }
@@ -34,8 +32,6 @@ struct TestView: View {
     
     var body: some View {
         Text("Hello \(MoviesAPI.movies(imdbId: "id").url!)")
-        
-        
     }
 }
 

@@ -13,6 +13,7 @@ enum MoviesAPI {
     private static var apiKey: String {
         "f82a83aa"
     }
+    
     var url: URL? {
         var component = URLComponents()
         component.scheme = "https"
@@ -36,7 +37,6 @@ enum MoviesAPI {
             if let contentType = contentType {
                 queryArray.append(URLQueryItem(name: "type", value: contentType))
             }
-
             
             if (!queryArray.isEmpty) {
                 return queryArray
@@ -45,6 +45,4 @@ enum MoviesAPI {
             }
         }
     }
-    
-    
 }

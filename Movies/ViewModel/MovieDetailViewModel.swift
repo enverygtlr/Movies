@@ -11,7 +11,6 @@ import SwiftUI
 class MovieDetailViewModel:ObservableObject {
     @Published var movieDetails : NewMovieDetailModel?
   
-    
     func getMovieDetails(imdbId:String) {
         DownloaderClient().downloadMovieDetails(imdbId: imdbId) { (result) in
             switch result {
@@ -25,6 +24,7 @@ class MovieDetailViewModel:ObservableObject {
         }
     }
 }
+
 struct NewMovieDetailModel {
     
     let detail : MovieDetailModel

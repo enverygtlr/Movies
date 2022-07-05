@@ -14,7 +14,6 @@ struct URLImage: View {
     @State var data: Data?
     
     var body: some View {
-        
         if let data = data, let uiimage = UIImage(data: data) {
             Image(uiImage: uiimage)
                 .resizable()
@@ -26,7 +25,6 @@ struct URLImage: View {
                 fetchData()
             }
         }
-       
     }
     
     func fetchData() {
@@ -35,8 +33,7 @@ struct URLImage: View {
         let task = URLSession.shared.dataTask(with: url) { data, _, error in
             self.data = data
         }
-
+        
         task.resume()
     }
-    
 }

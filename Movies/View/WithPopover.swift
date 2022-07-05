@@ -2,37 +2,6 @@ import UIKit
 import SwiftUI
 import Foundation
 
-// -- Usage
-
-struct Content: View {
-    @State var open = false
-    @State var popoverSize = CGSize(width: 300, height: 300)
-    
-    var body: some View {
-        WithPopover(
-            showPopover: $open,
-            popoverSize: popoverSize,
-            content: {
-                Button(action: { self.open.toggle() }) {
-                    Text("Tap me")
-                }
-        },
-            popoverContent: {
-                VStack {
-                    Button(action: { self.popoverSize = CGSize(width: 300, height: 600)}) {
-                        Text("Increase size")
-                    }
-                    Button(action: { self.open = false}) {
-                        Text("Close")
-                    }
-                }
-        })
-    }
-}
-
-
-// -- Source
-
 struct WithPopover<Content: View, PopoverContent: View>: View {
     
     @Binding var showPopover: Bool
@@ -124,7 +93,7 @@ struct WithPopover<Content: View, PopoverContent: View>: View {
         }
         
         func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-         return .none // this is what forces popovers on iPhone
+         return .none 
         }
         
         func updateSize(_ size: CGSize?) {
