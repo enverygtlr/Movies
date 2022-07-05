@@ -9,7 +9,6 @@ import SwiftUI
 import Kingfisher
 
 struct DetailView: View {
-    
     let imdbId: String
     @ObservedObject var vm = MovieDetailViewModel()
     
@@ -22,9 +21,6 @@ struct DetailView: View {
                         .resizable()
                         .frame(width: UIScreen.main.bounds.width*0.8, height: UIScreen.main.bounds.height*0.5, alignment: .center)
                         .cornerRadius(10.0)
-                    
-                    //                URLImage(urlString: vm.movieDetails?!).frame(width: UIScreen.main.bounds.width*0.5, height: UIScreen.main.bounds.height*0.4, alignment: .center)
-                    
                     Spacer()
                 }
                 Text("\(vm.movieDetails?.title ?? "")").font(.title3).bold()

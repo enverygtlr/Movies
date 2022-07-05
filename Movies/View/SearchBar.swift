@@ -34,11 +34,12 @@ struct SearchBar: View {
                             Image(systemName: "xmark.circle.fill")
                                 .padding(.vertical)
                         }
-
                     }
-                }.padding(.horizontal, 32)
+                }
+                .padding(.horizontal, 32)
                 .foregroundColor(.gray)
-            ).transition(.move(edge: .trailing))
+            )
+            .transition(.move(edge: .trailing))
             .animation(.spring())
             if isSearching {
                 Button(action: {

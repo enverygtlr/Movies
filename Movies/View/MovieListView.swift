@@ -11,6 +11,7 @@ struct MovieListView: View {
     @ObservedObject var movieListViewModel = MovieListViewModel()
     
     @State var searchText = ""
+    
     @State var isSearching = false
     @State var lastQuery: String? = nil
     @State var showFilters = false
@@ -52,7 +53,9 @@ struct MovieListView: View {
                     },
                     popoverContent: {
                         FilterView(filters: $filters) {
-                            movieListViewModel.downloadMovies(search: searchText, contentType: filters.typeFilter.typeString)
+                            if let lastQuery = lastQuery {
+                                movieListViewModel.downloadMovies(search: lastQuery, contentType: filters.typeFilter.typeString)
+                            }
                         }
                     })
                 
@@ -60,8 +63,12 @@ struct MovieListView: View {
                     SearchBar(searchText: $searchText, isSearching: $isSearching) {
                         if searchText.count < 3 {
                             showingAlert = true
+                            return
                         }
+                        
+                        lastQuery = searchText
                         movieListViewModel.downloadMovies(search: searchText, contentType: filters.typeFilter.typeString)
+                        searchText = ""
                    
                     }.alert(isPresented: $showingAlert, content: {
                         Alert(
