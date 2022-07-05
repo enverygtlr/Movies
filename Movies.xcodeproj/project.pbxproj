@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5B51A02E286704380066A461 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51A02D286704380066A461 /* Movie.swift */; };
 		5B51A0312867A2BA0066A461 /* DownloaderClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51A0302867A2BA0066A461 /* DownloaderClient.swift */; };
+		5B60DD302874714600A1AE37 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B60DD322874714600A1AE37 /* Localizable.strings */; };
 		5B71C036286B21D800CE35A5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5B71C035286B21D800CE35A5 /* Kingfisher */; };
 		5B71C039286B239400CE35A5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5B71C038286B239400CE35A5 /* Kingfisher */; };
 		5BC075CE2869F040003EF429 /* MovieDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC075CD2869F040003EF429 /* MovieDetailModel.swift */; };
@@ -50,6 +51,8 @@
 /* Begin PBXFileReference section */
 		5B51A02D286704380066A461 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		5B51A0302867A2BA0066A461 /* DownloaderClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloaderClient.swift; sourceTree = "<group>"; };
+		5B60DD312874714600A1AE37 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5B60DD332874715200A1AE37 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5BC075CD2869F040003EF429 /* MovieDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailModel.swift; sourceTree = "<group>"; };
 		5BC075CF286A0D2B003EF429 /* MovieDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewModel.swift; sourceTree = "<group>"; };
 		5BC075D1286A2817003EF429 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
@@ -174,6 +177,7 @@
 				B58DBAFA2865C90C00608EC4 /* Assets.xcassets */,
 				B58DBAFF2865C90C00608EC4 /* Info.plist */,
 				B58DBAFC2865C90C00608EC4 /* Preview Content */,
+				5B60DD322874714600A1AE37 /* Localizable.strings */,
 			);
 			path = Movies;
 			sourceTree = "<group>";
@@ -310,6 +314,7 @@
 			knownRegions = (
 				en,
 				Base,
+				tr,
 			);
 			mainGroup = B58DBAEA2865C90000608EC4;
 			packageReferences = (
@@ -333,6 +338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B58DBAFE2865C90C00608EC4 /* Preview Assets.xcassets in Resources */,
+				5B60DD302874714600A1AE37 /* Localizable.strings in Resources */,
 				B58DBAFB2865C90C00608EC4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,11 +413,24 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		5B60DD322874714600A1AE37 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5B60DD312874714600A1AE37 /* en */,
+				5B60DD332874715200A1AE37 /* tr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		B58DBB162865C90C00608EC4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -473,6 +492,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
