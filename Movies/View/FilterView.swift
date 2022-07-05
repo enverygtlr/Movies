@@ -9,27 +9,33 @@ import SwiftUI
 
 struct FilterView: View {
     @Binding var filters: MovieListView.MovieFilter
-        
-        
+    var apply: () -> Void
+    
     var body: some View {
-        VStack{
+        VStack(alignment: .center) {
             Text("Filter")
                 .font(.headline)
                 .padding()
             
-            List {
-                VStack {
-                    Text("Type")
-                    Picker("Type", selection: $filters.typeFilter) {
-                        Text("All").tag(MovieListView.MovieFilter.MovieTypes.all)
-                        Text("Movie").tag(MovieListView.MovieFilter.MovieTypes.movies)
-                        Text("Series").tag(MovieListView.MovieFilter.MovieTypes.series)
-                    }
+            VStack {
+                Text("Type")
+                Picker("Type", selection: $filters.typeFilter) {
+                    Text("All").tag(MovieListView.MovieFilter.MovieTypes.all)
+                    Text("Movie").tag(MovieListView.MovieFilter.MovieTypes.movies)
+                    Text("Series").tag(MovieListView.MovieFilter.MovieTypes.series)
                 }
+                .pickerStyle(SegmentedPickerStyle())
             }
-            .pickerStyle(SegmentedPickerStyle())
+                        
+            Button(action: {
+                self.apply()
+            }, label: {
+                Text("Search")
+            })
+            .foregroundColor(.blue)
+            .padding(30)
             
-            Spacer()
         }
+        .padding()
     }
 }

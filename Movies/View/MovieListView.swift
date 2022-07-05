@@ -12,8 +12,12 @@ struct MovieListView: View {
     
     @State var searchText = ""
     @State var isSearching = false
+    @State var lastQuery: String? = nil
     @State var showFilters = false
+    @State private var showingAlert = false
+
     @State var filters = MovieFilter()
+    @State var popoverSize = CGSize(width: 300, height: 250)
     
     struct MovieFilter: Equatable {
         
@@ -34,59 +38,80 @@ struct MovieListView: View {
             }
             
             var id: Self { self }
-
+            
         }
         var typeFilter: MovieTypes = .all
         
         var id: Self { self }
-
+        
     }
     
     var body: some View {
         NavigationView {
-            VStack{
-                SearchBar(searchText: $searchText, isSearching: $isSearching) {
-                    movieListViewModel.downloadMovies(search: searchText, contentType: filters.typeFilter.typeString)
-                }
+            ZStack {
+                WithPopover(
+                    showPopover: $showFilters,
+                    popoverSize: popoverSize,
+                    content: {
+                        Text("Tap")
+                    },
+                    popoverContent: {
+                        FilterView(filters: $filters) {
+                            movieListViewModel.downloadMovies(search: searchText, contentType: filters.typeFilter.typeString)
+                        }
+                    })
                 
-                List() {                    
-                    ForEach(movieListViewModel.movieList, id: \.self) { movie in
+                VStack {
+                    SearchBar(searchText: $searchText, isSearching: $isSearching) {
+                        if searchText.count < 3 {
+                            showingAlert = true
+                        }
                         
-                        NavigationLink(
-                            destination:DetailView(imdbId: movie.imdbID),
-                            label: {
-                                HStack {
-                                    URLImage(urlString: movie.poster)
-                                        .frame(width: 100, height: 150)
-                                    
-                                    VStack(alignment: .leading) {
-                                        Text(movie.title)
-                                            .font(.title)
+                        movieListViewModel.downloadMovies(search: searchText, contentType: filters.typeFilter.typeString)
+                    }.alert(isPresented: $showingAlert, content: {
+                        Alert(
+                            title: Text("Error"),
+                            message: Text("Enter words which have more than three letters."),
+                            dismissButton: .default(Text("Got it!"))
+                        )
+                    })
+                    
+                    List() {
+                        ForEach(movieListViewModel.movieList, id: \.self) { movie in
+                            
+                            NavigationLink(
+                                destination:DetailView(imdbId: movie.imdbID),
+                                label: {
+                                    HStack {
+                                        URLImage(urlString: movie.poster)
+                                            .frame(width: 100, height: 150)
                                         
-                                        Text("\(movie.year)")
-                                            .foregroundColor(.yellow)
-                                        
-                                        Text("\(movie.type)")
-                                            .foregroundColor(.gray)
-                                        
+                                        VStack(alignment: .leading) {
+                                            Text(movie.title)
+                                                .font(.title)
+                                            
+                                            Text("\(movie.year)")
+                                                .foregroundColor(.yellow)
+                                            
+                                            Text("\(movie.type)")
+                                                .foregroundColor(.gray)
+                                            
+                                        }
                                     }
-                                }
-                                .padding(10)
-                            })
+                                    .padding(10)
+                                })
+                        }
                     }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                    Spacer()
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                Spacer()
-            }
-            .navigationTitle("Movies")
-            .toolbar {
-                Button {
-                    showFilters = true
-                } label: {
-                    Image(systemName: "doc.text.magnifyingglass")
-                }
-                .sheet(isPresented: $showFilters) {
-                    FilterView(filters: $filters)
+                .navigationTitle("Movies")
+                .toolbar {
+                    Button {
+                        showFilters = true
+                    } label: {
+                        Image(systemName: "doc.text.magnifyingglass")
+                    }
                 }
             }
         }
