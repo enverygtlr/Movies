@@ -29,7 +29,7 @@ struct FilterView: View {
             }
             .pickerStyle(SegmentedPickerStyle())
             
-            Spacer()
+//            Spacer()
         }
     }
 }
