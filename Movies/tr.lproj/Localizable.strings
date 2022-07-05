@@ -1,11 +1,10 @@
 /* 
- Localizable.strings
- Movies
- 
- Created by Berat Yavuz on 5.07.2022.
- 
- */
+  Localizable.strings
+  Movies
 
+  Created by Berat Yavuz on 5.07.2022.
+  
+*/
 "Search names here" = "Dizi,film arayın...";
 "Movies" = "Filmler";
 "Filter" = "Filtrele";
