@@ -1,0 +1,22 @@
+/* 
+  Localizable.strings
+  Movies
+
+  Created by Berat Yavuz on 5.07.2022.
+  
+*/
+"Search names here" = "Dizi,film arayın...";
+"Movies" = "Filmler";
+"Filter" = "Filtrele";
+"Type" = "Tip";
+"All" = "Hepsi";
+"Movie" = "Film";
+"Series" = "Dizi";
+"Search" = "Ara";
+"Year:" = "Çıkış Yılı";
+"Plot:" = "Özet";
+"Actors:" = "Oyuncular";
+"Director:" = "Yönetmen";
+"Error" = "Hata";
+"Enter words which have more than three letters." = "Lütfen en az 3 harf giriniz !";
+"Got it!" = "Tamam";
