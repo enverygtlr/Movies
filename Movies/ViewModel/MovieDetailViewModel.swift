@@ -12,7 +12,7 @@ class MovieDetailViewModel:ObservableObject {
     @Published var movieDetails : NewMovieDetailModel?
   
     func getMovieDetails(imdbId:String) {
-        DownloaderClient().downloadMovieDetails(imdbId: imdbId) { (result) in
+        DownloaderClient.downloadMovieDetails(imdbId: imdbId) { (result) in
             switch result {
             case .failure(let error) :
                 print(error)

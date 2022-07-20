@@ -17,10 +17,19 @@ struct DetailView: View {
             VStack(alignment: .leading, spacing: 5) {
                 HStack (alignment: .center) {
                     Spacer()
-                    KFImage(URL(string: vm.movieDetails?.poster ?? "no_image"))
-                        .resizable()
-                        .frame(width: UIScreen.main.bounds.width*0.8, height: UIScreen.main.bounds.height*0.5, alignment: .center)
-                        .cornerRadius(10.0)
+                    
+                    
+                    if vm.movieDetails?.poster != "N/A" && vm.movieDetails?.poster != nil {
+                        KFImage(URL(string: vm.movieDetails!.poster))
+                            .resizable()
+                            .frame(width: UIScreen.main.bounds.width*0.8, height: UIScreen.main.bounds.height*0.5, alignment: .center)
+                            .cornerRadius(10.0)
+                    } else {
+                        Image("no_image")
+                            .frame(width: UIScreen.main.bounds.width*0.8, height: UIScreen.main.bounds.height*0.5, alignment: .center)
+                            .cornerRadius(10.0)
+                    }
+     
                     Spacer()
                 }
                 Text("\(vm.movieDetails?.title ?? "")").font(.title3).bold()

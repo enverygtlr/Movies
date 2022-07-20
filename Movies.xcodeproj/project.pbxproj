@@ -15,7 +15,6 @@
 		5BC075CE2869F040003EF429 /* MovieDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC075CD2869F040003EF429 /* MovieDetailModel.swift */; };
 		5BC075D0286A0D2B003EF429 /* MovieDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC075CF286A0D2B003EF429 /* MovieDetailViewModel.swift */; };
 		5BC075D2286A2817003EF429 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC075D1286A2817003EF429 /* DetailView.swift */; };
-		5BC3756A287469D800C7F5BC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BC3756C287469D800C7F5BC /* Localizable.strings */; };
 		B51851B828744285004D6C43 /* WithPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51851B728744285004D6C43 /* WithPopover.swift */; };
 		B5325A492869D2860020D485 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5325A482869D2860020D485 /* SearchBar.swift */; };
 		B58DBAF72865C90000608EC4 /* MoviesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58DBAF62865C90000608EC4 /* MoviesApp.swift */; };
@@ -29,6 +28,8 @@
 		B5C083E92869C36400F18A28 /* MovieListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C083E82869C36400F18A28 /* MovieListView.swift */; };
 		B5C083EE2869C60C00F18A28 /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C083ED2869C60C00F18A28 /* URLImage.swift */; };
 		B5C4322A286DD7BD00BA8DD5 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C43229286DD7BD00BA8DD5 /* FilterView.swift */; };
+		B5EEFB822887F72200CD704A /* MoviesAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EEFB812887F72200CD704A /* MoviesAPITest.swift */; };
+		B5EEFB8728880BE900CD704A /* DownloaderClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EEFB8628880BE900CD704A /* DownloaderClientTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,8 +57,6 @@
 		5BC075CD2869F040003EF429 /* MovieDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailModel.swift; sourceTree = "<group>"; };
 		5BC075CF286A0D2B003EF429 /* MovieDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewModel.swift; sourceTree = "<group>"; };
 		5BC075D1286A2817003EF429 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
-		5BC3756B287469D800C7F5BC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		5BC3756D287469ED00C7F5BC /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B51851B728744285004D6C43 /* WithPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithPopover.swift; sourceTree = "<group>"; };
 		B5325A482869D2860020D485 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		B58DBAF32865C90000608EC4 /* Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movies.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,6 +76,8 @@
 		B5C083E82869C36400F18A28 /* MovieListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListView.swift; sourceTree = "<group>"; };
 		B5C083ED2869C60C00F18A28 /* URLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImage.swift; sourceTree = "<group>"; };
 		B5C43229286DD7BD00BA8DD5 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
+		B5EEFB812887F72200CD704A /* MoviesAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesAPITest.swift; sourceTree = "<group>"; };
+		B5EEFB8628880BE900CD704A /* DownloaderClientTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloaderClientTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +196,8 @@
 			children = (
 				B58DBB082865C90C00608EC4 /* MoviesTests.swift */,
 				B58DBB0A2865C90C00608EC4 /* Info.plist */,
+				B5EEFB812887F72200CD704A /* MoviesAPITest.swift */,
+				B5EEFB8628880BE900CD704A /* DownloaderClientTest.swift */,
 			);
 			path = MoviesTests;
 			sourceTree = "<group>";
@@ -386,6 +389,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B58DBB092865C90C00608EC4 /* MoviesTests.swift in Sources */,
+				B5EEFB8728880BE900CD704A /* DownloaderClientTest.swift in Sources */,
+				B5EEFB822887F72200CD704A /* MoviesAPITest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

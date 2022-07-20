@@ -15,7 +15,8 @@ class DownloaderClient {
         guard let url = MoviesAPI.movies(search: search, contentType: contentType).url else {
             return completion(.failure(.wrongUrl))
         }
-        print("imdb URL = \(url)")
+        
+        print("URL: \(url)")
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data,  error == nil else {
@@ -30,10 +31,13 @@ class DownloaderClient {
         }.resume()
     }
     
-    func downloadMovieDetails(imdbId:String, completion: @escaping (Result<MovieDetailModel,DownloaderError>)-> Void) {
+    static func  downloadMovieDetails(imdbId:String, completion: @escaping (Result<MovieDetailModel,DownloaderError>)-> Void) {
         guard let url = MoviesAPI.movies(imdbId: imdbId).url else {
             return completion(.failure(.wrongUrl))
         }
+        
+        print("URL: \(url)")
+
         URLSession.shared.dataTask(with: url) { data, response,error in
             guard let data = data,  error == nil else {
                 return  completion(.failure(.dataNotArrived))

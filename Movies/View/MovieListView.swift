@@ -36,8 +36,10 @@ struct MovieListView: View {
                     return "series"
                 }
             }
+            
             var id: Self { self }
         }
+        
         var typeFilter: MovieTypes = .all
         var id: Self { self }
     }
