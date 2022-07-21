@@ -22,8 +22,9 @@ class DownloaderClientTest: XCTestCase {
         var result: Result<[Movie]?, DownloaderError>?
         
         let expectation = self.expectation(description: "Waiting for the downloadMovies call to complete.")
-        
+       
         DownloaderClient.downloadMovies(search: "batman") { response in
+            
             result = response
             
             expectation.fulfill()
