@@ -93,6 +93,7 @@ struct MovieListView: View {
                                         VStack(alignment: .leading) {
                                             Text(movie.title)
                                                 .font(.title)
+                                                
                                             
                                             Text("\(movie.year)")
                                                 .foregroundColor(.yellow)
@@ -103,13 +104,13 @@ struct MovieListView: View {
                                         }
                                     }
                                     .padding(10)
-                                })
+                                }).accessibilityIdentifier("navLink")
                         }
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                     Spacer()
                 }
-                .navigationTitle("Movies")
+                .navigationTitle("Movies").accessibilityIdentifier("navTitle")
                 .toolbar {
                     Button {
                         showFilters = true

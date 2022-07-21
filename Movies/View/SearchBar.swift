@@ -16,6 +16,7 @@ struct SearchBar: View {
         HStack {
             HStack {
                 TextField("Search names here", text: $searchText)
+                    .accessibilityIdentifier("movieTextField")
                     .padding(.leading, 24)
             }
             .padding()
@@ -51,6 +52,7 @@ struct SearchBar: View {
                         .padding(.trailing)
                         .padding(.leading, 0)
                 })
+                .accessibilityIdentifier("serchButton")
                 .transition(.move(edge: .trailing))
                 .animation(.spring())
             }
