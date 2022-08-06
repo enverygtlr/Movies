@@ -10,13 +10,11 @@ import SwiftUI
 struct FilterView: View {
     @Binding var filters: MovieListView.MovieFilter
     var apply: () -> Void
-    
     var body: some View {
         VStack(alignment: .center) {
             Text("Filter")
                 .font(.headline)
                 .padding()
-            
             VStack {
                 Text("Type")
                 Picker("Type", selection: $filters.typeFilter) {
@@ -26,7 +24,6 @@ struct FilterView: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
             }
-                        
             Button(action: {
                 self.apply()
             }, label: {

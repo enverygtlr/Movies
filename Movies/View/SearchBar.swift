@@ -7,7 +7,6 @@
 import SwiftUI
 import Foundation
 
-
 struct SearchBar: View {
     @Binding var searchText: String
     @Binding var isSearching: Bool
@@ -31,14 +30,13 @@ struct SearchBar: View {
                     Image(systemName: "magnifyingglass")
                     Spacer()
                     if isSearching {
-                        Button(action: { searchText = "" }) {
+                        Button(action: {searchText = "" }) {
                             Image(systemName: "xmark.circle.fill")
-                                .padding(.vertical)
-                        }
+                                .padding(.vertical)  }
                     }
                 }
-                .padding(.horizontal, 32)
-                .foregroundColor(.gray)
+                    .padding(.horizontal, 32)
+                    .foregroundColor(.gray)
             )
             .transition(.move(edge: .trailing))
             .animation(.spring())
@@ -46,7 +44,8 @@ struct SearchBar: View {
                 Button(action: {
                     self.action()
                     isSearching = false
-                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
+                                                    to: nil, from: nil, for: nil)
                 }, label: {
                     Text("Search")
                         .padding(.trailing)

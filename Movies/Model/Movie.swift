@@ -6,17 +6,13 @@
 //
 
 import Foundation
-//film model
-struct Movie : Codable, Hashable {
-    
-    let title : String
-    let year : String
-    let imdbID : String
-    let type : String
-    let poster : String
-    
-    private enum CodingKeys : String , CodingKey {
-        
+struct Movie: Codable, Hashable {
+    let title: String
+    let year: String
+    let imdbID: String
+    let type: String
+    let poster: String
+    private enum CodingKeys: String, CodingKey {
         case title = "Title"
         case year = "Year"
         case imdbID = "imdbID"
@@ -25,10 +21,10 @@ struct Movie : Codable, Hashable {
     }
 }
 
-struct MovieArray : Codable {
-    let movies : [Movie]
+struct MovieArray: Codable {
+    let movies: [Movie]
     //    Apideki Search keyi için
-    private enum CodingKeys : String , CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case movies = "Search"
     }
 }
