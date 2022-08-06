@@ -8,53 +8,18 @@
 import Foundation
 import SwiftUI
 
-class MovieDetailViewModel:ObservableObject {
-    @Published var movieDetails : NewMovieDetailModel?
-  
-    func getMovieDetails(imdbId:String) {
+class MovieDetailViewModel: ObservableObject {
+    @Published var movieDetails: MovieDetailModel?
+    func getMovieDetails(imdbId: String) {
         DownloaderClient.downloadMovieDetails(imdbId: imdbId) { (result) in
             switch result {
             case .failure(let error) :
                 print(error)
             case .success(let movieDetail):
                 DispatchQueue.main.async {
-                    self.movieDetails = NewMovieDetailModel(detail: movieDetail)
+                    self.movieDetails = movieDetail
                 }
             }
         }
     }
-}
-
-struct NewMovieDetailModel {
-    
-    let detail : MovieDetailModel
-    
-    var title:String {
-        detail.title
-    }
-    var poster: String {
-        detail.poster
-    }
-    var year: String {
-        detail.year
-    }
-    var imdbId: String {
-        detail.imdbId
-    }
-    var director: String {
-        detail.director
-    }
-    var writer: String {
-        detail.writer
-    }
-    var awards: String {
-        detail.awards
-    }
-    var plot: String {
-        detail.plot
-    }
-    var actors: String {
-        detail.actors
-    }
-    
 }

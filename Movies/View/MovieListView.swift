@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MovieListView: View {
     @ObservedObject var movieListViewModel = MovieListViewModel()
-    
     @State var searchText = ""
     
     @State var isSearching = false
@@ -18,14 +17,11 @@ struct MovieListView: View {
     @State private var showingAlert = false
     @State var filters = MovieFilter()
     @State var popoverSize = CGSize(width: 300, height: 250)
-    
     struct MovieFilter: Equatable {
-        
-        enum MovieTypes: Equatable {
+     enum MovieTypes: Equatable {
             case all
             case movies
             case series
-            
             var typeString: String? {
                 switch self {
                 case .all:
@@ -36,14 +32,11 @@ struct MovieListView: View {
                     return "series"
                 }
             }
-            
             var id: Self { self }
         }
-        
         var typeFilter: MovieTypes = .all
         var id: Self { self }
     }
-    
     var body: some View {
         NavigationView {
             ZStack {
@@ -56,22 +49,21 @@ struct MovieListView: View {
                     popoverContent: {
                         FilterView(filters: $filters) {
                             if let lastQuery = lastQuery {
-                                movieListViewModel.downloadMovies(search: lastQuery, contentType: filters.typeFilter.typeString)
+                                movieListViewModel.downloadMovies(search: lastQuery,
+                                contentType: filters.typeFilter.typeString)
                             }
                         }
                     })
-                
                 VStack {
                     SearchBar(searchText: $searchText, isSearching: $isSearching) {
                         if searchText.count < 3 {
                             showingAlert = true
                             return
                         }
-                        
                         lastQuery = searchText
-                        movieListViewModel.downloadMovies(search: searchText, contentType: filters.typeFilter.typeString)
+                        movieListViewModel
+                        .downloadMovies(search: searchText, contentType: filters.typeFilter.typeString)
                         searchText = ""
-                   
                     }.alert(isPresented: $showingAlert, content: {
                         Alert(
                             title: Text("Error"),
@@ -79,28 +71,21 @@ struct MovieListView: View {
                             dismissButton: .default(Text("Got it!"))
                         )
                     })
-                    
-                    List() {
+                    List {
                         ForEach(movieListViewModel.movieList, id: \.self) { movie in
-                            
                             NavigationLink(
-                                destination:DetailView(imdbId: movie.imdbID),
+                                destination: DetailView(imdbId: movie.imdbID),
                                 label: {
                                     HStack {
                                         URLImage(urlString: movie.poster)
                                             .frame(width: 100, height: 150)
-                                        
                                         VStack(alignment: .leading) {
                                             Text(movie.title)
                                                 .font(.title)
-                                                
-                                            
                                             Text("\(movie.year)")
                                                 .foregroundColor(.yellow)
-                                            
                                             Text("\(movie.type)")
                                                 .foregroundColor(.gray)
-                                            
                                         }
                                     }
                                     .padding(10)

@@ -5,7 +5,6 @@
 //  Created by Berat Yavuz on 27.06.2022.
 //
 
-
 import Foundation
 
 struct MovieDetailModel: Codable {
@@ -21,8 +20,7 @@ struct MovieDetailModel: Codable {
     let metascore: String
     let imdbRating: String
     let imdbId: String
-    
-    private enum CodingKeys : String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case title = "Title"
         case year = "Year"
         case genre = "Genre"
