@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FilterView: View {
-    @Binding var filters: MovieListView.MovieFilter
+    @Binding var filters: MovieFilterCollection
     var apply: () -> Void
     var body: some View {
         VStack(alignment: .center) {
@@ -18,9 +18,9 @@ struct FilterView: View {
             VStack {
                 Text("Type")
                 Picker("Type", selection: $filters.typeFilter) {
-                    Text("All").tag(MovieListView.MovieFilter.MovieTypes.all)
-                    Text("Movie").tag(MovieListView.MovieFilter.MovieTypes.movies)
-                    Text("Series").tag(MovieListView.MovieFilter.MovieTypes.series)
+                    Text("All").tag(MovieFilterCollection.MovieTypeFilter.all)
+                    Text("Movie").tag(MovieFilterCollection.MovieTypeFilter.movies)
+                    Text("Series").tag(MovieFilterCollection.MovieTypeFilter.series)
                 }
                 .pickerStyle(SegmentedPickerStyle())
             }

@@ -16,8 +16,9 @@ struct DetailView: View {
             VStack(alignment: .leading, spacing: 5) {
                 HStack(alignment: .center) {
                     Spacer()
-                    if movieDetailVM.movieDetails?.poster != "N/A" && movieDetailVM.movieDetails?.poster != nil {
-                        KFImage(URL(string: movieDetailVM.movieDetails!.poster))
+                    
+                    if vm.movieDetails?.poster != "N/A" && vm.movieDetails?.poster != nil {
+                        KFImage(URL(string: vm.movieDetails!.poster))
                             .resizable()
                             .frame(width: UIScreen.main.bounds.width*0.8,
                                    height: UIScreen.main.bounds.height*0.5, alignment: .center)
