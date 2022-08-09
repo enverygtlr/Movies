@@ -7,11 +7,11 @@
 import SwiftUI
 import Foundation
 
-
 struct SearchBar: View {
     @Binding var searchText: String
     @Binding var isSearching: Bool
     var action: () -> Void
+    
     var body: some View {
         HStack {
             HStack {
@@ -23,9 +23,9 @@ struct SearchBar: View {
             .background(Color(.systemGray5))
             .cornerRadius(6)
             .padding(.horizontal)
-            .onTapGesture(perform: {
+            .onTapGesture {
                 isSearching = true
-            })
+            }
             .overlay(
                 HStack {
                     Image(systemName: "magnifyingglass")

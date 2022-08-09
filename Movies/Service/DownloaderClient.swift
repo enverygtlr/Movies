@@ -49,6 +49,7 @@ class DownloaderClient {
         }.resume()
     }
 }
+
 // hatalar için enum
 enum DownloaderError: Error {
     case wrongUrl
