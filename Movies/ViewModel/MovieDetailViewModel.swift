@@ -9,7 +9,13 @@ import Foundation
 import SwiftUI
 
 class MovieDetailViewModel: ObservableObject {
-    @Published var movieDetails: MovieDetailModel?
+
+//    @Published var movieDetails : MovieDetailModel?
+    @Published var movieDetailData : MovieDetailViewData
+    
+    init ( imdbId:String) {
+        _movieDetailData = Published(initialValue: MovieDetailViewData(imdbId:imdbId))
+    }
     func getMovieDetails(imdbId: String) {
         DownloaderClient.downloadMovieDetails(imdbId: imdbId) { (result) in
             switch result {
@@ -17,9 +23,10 @@ class MovieDetailViewModel: ObservableObject {
                 print(error)
             case .success(let movieDetail):
                 DispatchQueue.main.async {
-                    self.movieDetails = movieDetail
+                    self.movieDetailData.movieDetails = movieDetail
                 }
             }
         }
     }
+    
 }

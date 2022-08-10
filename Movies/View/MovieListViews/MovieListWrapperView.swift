@@ -17,6 +17,8 @@ struct MovieListWrapperView: View {
             }, search: {
                 viewModel.search()
             })
+            
+         
         }
     }
 }

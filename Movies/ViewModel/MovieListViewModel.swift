@@ -31,11 +31,8 @@ class MovieListViewModel: ObservableObject {
             viewData.showingAlert = true
             return
         }
-        
         viewData.lastQuery = viewData.searchText
-        
         downloadMovies(search: viewData.searchText, contentType: viewData.filter.typeFilter.typeURLParamater)
-        
         viewData.searchText = ""
     }
 }
