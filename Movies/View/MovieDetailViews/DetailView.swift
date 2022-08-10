@@ -9,16 +9,20 @@ import SwiftUI
 import Kingfisher
 
 struct DetailView: View {
-    let imdbId: String
-    @ObservedObject var movieDetailVM = MovieDetailViewModel()
+
+    @ObservedObject var data : MovieDetailViewData;
+   
+    var getMovieDetails: (_ imdbId: String) -> Void
+    
+
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 5) {
                 HStack(alignment: .center) {
                     Spacer()
-                    
-                    if vm.movieDetails?.poster != "N/A" && vm.movieDetails?.poster != nil {
-                        KFImage(URL(string: vm.movieDetails!.poster))
+                    if  data.movieDetails?.poster != "N/A" && data.movieDetails?.poster != nil {
+                        KFImage(URL(string: data.movieDetails?.poster ?? ""))
                             .resizable()
                             .frame(width: UIScreen.main.bounds.width*0.8,
                                    height: UIScreen.main.bounds.height*0.5, alignment: .center)
@@ -31,39 +35,39 @@ struct DetailView: View {
                     }
                     Spacer()
                 }
-                Text("\(movieDetailVM.movieDetails?.title ?? "")").font(.title3).bold()
+                Text("\(data.movieDetails?.title ?? "")").font(.title3).bold()
                     .padding().foregroundColor(.blue)
                 HStack {
                     Text("Year:").foregroundColor(.blue)
-                    Text(" \(movieDetailVM.movieDetails?.year ?? "")").font(.subheadline)
+                    Text(" \(data.movieDetails?.year ?? "")").font(.subheadline)
                         .padding()
                 }
                 HStack {
                     Text("Plot:").foregroundColor(.blue)
-                    Text("\(movieDetailVM.movieDetails?.plot ?? "")").font(.subheadline)
+                    Text("\(data.movieDetails?.plot ?? "")").font(.subheadline)
                         .padding()
                 }
                 HStack {
                     Text("Actors:").foregroundColor(.blue)
-                    Text("\(movieDetailVM.movieDetails?.actors ?? "")").font(.subheadline)
+                    Text("\(data.movieDetails?.actors ?? "")").font(.subheadline)
                         .padding()
                 }
                 HStack {
                     Text("Director:").foregroundColor(.blue)
-                    Text("\(movieDetailVM.movieDetails?.director ?? "")").font(.subheadline)
+                    Text("\(data.movieDetails?.director ?? "")").font(.subheadline)
                         .padding()
                 }
             }
             .padding()
             .onAppear {
-                self.movieDetailVM.getMovieDetails(imdbId: imdbId)
+                self.getMovieDetails(data.imdbId)
             }
         }
     }
 }
 
-struct DetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailView(imdbId: "")
-    }
-}
+//struct DetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DetailView( imdbId: "")
+//    }
+//}

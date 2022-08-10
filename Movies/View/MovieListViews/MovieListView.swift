@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct MovieListView: View {
-    @ObservedObject var data: MovieListViewData;
-    
+    @ObservedObject var data: MovieListViewData
     var downloadMovies: (_ search: String, _ contentType: String?) -> Void
     var search: () -> Void
-    
+
     var body: some View {
         NavigationView {
             ZStack {
@@ -29,23 +28,22 @@ struct MovieListView: View {
                             }
                         }
                     })
-                
+
                 VStack {
                     SearchBar(searchText: $data.searchText, isSearching: $data.isSearching) {
-                         search()                   
+                        search()
                     }.alert(isPresented: $data.showingAlert, content: {
                         Alert(
                             title: Text("Error"),
                             message: Text("Enter words which have more than three letters."),
-                            dismissButton: .default(Text("Got it!"))
-                        )
+                            dismissButton: .default(Text("Got it!")))
                     })
-                    
-                    List() {
+
+                    List {
                         ForEach(data.movieList, id: \.self) { movie in
-                            
+
                             NavigationLink(
-                                destination:DetailView(imdbId: movie.imdbID),
+                                destination: MovieDetailWrapperView(imdbId: movie.imdbID),
                                 label: {
                                     MovieRow(movie: movie)
                                 }).accessibilityIdentifier("navLink")
@@ -67,8 +65,8 @@ struct MovieListView: View {
     }
 }
 
-//struct MovieListView_Previews: PreviewProvider {
+// struct MovieListView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        MovieListView()
 //    }
-//}
+// }
