@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct Movie: Codable, Hashable {
+ public struct Movie: Codable, Hashable {
     let title: String
     let year: String
     let imdbID: String

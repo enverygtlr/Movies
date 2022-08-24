@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B3D17C228A826A600357A54 /* ServiceApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3D17C128A826A600357A54 /* ServiceApi.swift */; };
+		5B3D17F528B4EF2900357A54 /* MockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3D17F428B4EF2900357A54 /* MockService.swift */; };
+		5B3D17F928B541B100357A54 /* MoviesViewModelUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3D17F828B541B100357A54 /* MoviesViewModelUnitTest.swift */; };
 		5B51A02E286704380066A461 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51A02D286704380066A461 /* Movie.swift */; };
 		5B51A0312867A2BA0066A461 /* DownloaderClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51A0302867A2BA0066A461 /* DownloaderClient.swift */; };
 		5B60DD302874714600A1AE37 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B60DD322874714600A1AE37 /* Localizable.strings */; };
@@ -58,6 +61,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B3D17C128A826A600357A54 /* ServiceApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceApi.swift; sourceTree = "<group>"; };
+		5B3D17F428B4EF2900357A54 /* MockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockService.swift; sourceTree = "<group>"; };
+		5B3D17F828B541B100357A54 /* MoviesViewModelUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewModelUnitTest.swift; sourceTree = "<group>"; };
 		5B51A02D286704380066A461 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		5B51A0302867A2BA0066A461 /* DownloaderClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloaderClient.swift; sourceTree = "<group>"; };
 		5B60DD312874714600A1AE37 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -159,6 +165,8 @@
 			isa = PBXGroup;
 			children = (
 				5B51A0302867A2BA0066A461 /* DownloaderClient.swift */,
+				5B3D17C128A826A600357A54 /* ServiceApi.swift */,
+				5B3D17F428B4EF2900357A54 /* MockService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -240,6 +248,7 @@
 				B58DBB0A2865C90C00608EC4 /* Info.plist */,
 				B5EEFB812887F72200CD704A /* MoviesAPITest.swift */,
 				B5EEFB8628880BE900CD704A /* DownloaderClientTest.swift */,
+				5B3D17F828B541B100357A54 /* MoviesViewModelUnitTest.swift */,
 			);
 			path = MoviesTests;
 			sourceTree = "<group>";
@@ -283,7 +292,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B58DBB182865C90C00608EC4 /* Build configuration list for PBXNativeTarget "Movies" */;
 			buildPhases = (
-				5B86CB15289D962300F4B68A /* Run SwiftLint */,
 				B58DBAEF2865C90000608EC4 /* Sources */,
 				B58DBAF02865C90000608EC4 /* Frameworks */,
 				B58DBAF12865C90000608EC4 /* Resources */,
@@ -411,27 +419,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		5B86CB15289D962300F4B68A /* Run SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Run SwiftLint";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		B58DBAEF2865C90000608EC4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -439,6 +426,7 @@
 			files = (
 				B5C4322A286DD7BD00BA8DD5 /* FilterView.swift in Sources */,
 				B538BEF6289D3B770011401D /* MovieRow.swift in Sources */,
+				5B3D17C228A826A600357A54 /* ServiceApi.swift in Sources */,
 				B58DBAF92865C90000608EC4 /* ContentView.swift in Sources */,
 				B538BF3A28A0F3140011401D /* MovieListViewData.swift in Sources */,
 				5BC075D2286A2817003EF429 /* DetailView.swift in Sources */,
@@ -451,6 +439,7 @@
 				5B51A0312867A2BA0066A461 /* DownloaderClient.swift in Sources */,
 				5BE2B4A928A2955F0090DB86 /* MovieDetailViewData.swift in Sources */,
 				B5325A492869D2860020D485 /* SearchBar.swift in Sources */,
+				5B3D17F528B4EF2900357A54 /* MockService.swift in Sources */,
 				5BC075D0286A0D2B003EF429 /* MovieDetailViewModel.swift in Sources */,
 				B538BEF1289D39880011401D /* MovieFilterCollection.swift in Sources */,
 				B5C083D82869A87600F18A28 /* MovieListViewModel.swift in Sources */,
@@ -467,6 +456,7 @@
 				B58DBB092865C90C00608EC4 /* MoviesTests.swift in Sources */,
 				B5EEFB8728880BE900CD704A /* DownloaderClientTest.swift in Sources */,
 				B5EEFB822887F72200CD704A /* MoviesAPITest.swift in Sources */,
+				5B3D17F928B541B100357A54 /* MoviesViewModelUnitTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

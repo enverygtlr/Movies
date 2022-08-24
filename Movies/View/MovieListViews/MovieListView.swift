@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MovieListView: View {
     @ObservedObject var data: MovieListViewData
+    var client = DownloaderClient()
     var downloadMovies: (_ search: String, _ contentType: String?) -> Void
     var search: () -> Void
 
@@ -43,7 +44,7 @@ struct MovieListView: View {
                         ForEach(data.movieList, id: \.self) { movie in
 
                             NavigationLink(
-                                destination: MovieDetailWrapperView(imdbId: movie.imdbID),
+                                destination: MovieDetailWrapperView(imdbId: movie.imdbID, service: client),
                                 label: {
                                     MovieRow(movie: movie)
                                 }).accessibilityIdentifier("navLink")

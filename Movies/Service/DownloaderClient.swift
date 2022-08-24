@@ -7,10 +7,11 @@
 
 import Foundation
 
-class DownloaderClient {
-    // aranacak film ve bittikten sonra ne olacağını main threadi bloklamamak için escape succes ve failure verdik
-    static func downloadMovies(search: String? = nil, contentType: String? = nil, completion:
-                               @escaping (Result<[Movie]?, DownloaderError>) -> Void ) {
+public class DownloaderClient : ServiceApi {
+     public  func downloadMovies (
+    search: String? = nil,
+    contentType: String? = nil,
+    completion: @escaping (Result<[Movie]?, DownloaderError>) -> Void ) {
         guard let url = MoviesAPI.movies(search: search, contentType: contentType).url else {
             return completion(.failure(.wrongUrl))
         }
@@ -25,8 +26,12 @@ class DownloaderClient {
             completion(.success(movieResponse.movies))
         }.resume()
     }
-    static func  downloadMovieDetails(imdbId: String, completion:
-    @escaping (Result<MovieDetailModel, DownloaderError>) -> Void) {
+    
+    
+    
+    public func  downloadMovieDetails(
+        imdbId: String,
+        completion: @escaping (Result<MovieDetailModel, DownloaderError>) -> Void) {
         guard let url = MoviesAPI.movies(imdbId: imdbId).url else {
             return completion(.failure(.wrongUrl))
         }
@@ -44,7 +49,7 @@ class DownloaderClient {
 }
 
 // hatalar için enum
-enum DownloaderError: Error {
+ public enum DownloaderError: Error {
     case wrongUrl
     case dataNotArrived
     case dataNotProcessed

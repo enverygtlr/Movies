@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct MovieListWrapperView: View {
-    @ObservedObject var viewModel = MovieListViewModel()
+    
+    @ObservedObject var viewModel = MovieListViewModel(client: DownloaderClient())
     
     var body: some View {
         VStack {

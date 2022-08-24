@@ -13,11 +13,14 @@ class MovieDetailViewModel: ObservableObject {
 //    @Published var movieDetails : MovieDetailModel?
     @Published var movieDetailData : MovieDetailViewData
     
-    init ( imdbId:String) {
+    var service: ServiceApi
+
+    init ( imdbId:String,service:ServiceApi) {
         _movieDetailData = Published(initialValue: MovieDetailViewData(imdbId:imdbId))
+        self.service = service
     }
     func getMovieDetails(imdbId: String) {
-        DownloaderClient.downloadMovieDetails(imdbId: imdbId) { (result) in
+        service.downloadMovieDetails(imdbId: imdbId) { (result) in
             switch result {
             case .failure(let error) :
                 print(error)

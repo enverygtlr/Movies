@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct MovieDetailWrapperView: View {
-    @ObservedObject var detailViewModel: MovieDetailViewModel
+    @ObservedObject var detailViewModel : MovieDetailViewModel
     var imdbId: String
-    init(imdbId: String) {
+    var service : DownloaderClient
+    init(imdbId: String,service: DownloaderClient) {
         self.imdbId = imdbId
-        _detailViewModel = ObservedObject(initialValue: MovieDetailViewModel(imdbId: imdbId))
+        self.service = service
+        _detailViewModel = ObservedObject(initialValue: MovieDetailViewModel(imdbId: imdbId, service: service))
     }
 
     var body: some View {
