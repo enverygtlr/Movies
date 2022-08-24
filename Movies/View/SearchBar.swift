@@ -10,6 +10,8 @@ import Foundation
 struct SearchBar: View {
     @Binding var searchText: String
     @Binding var isSearching: Bool
+ 
+    
     var action: () -> Void
     
     var body: some View {

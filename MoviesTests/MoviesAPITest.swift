@@ -20,6 +20,7 @@ class MoviesAPITest: XCTestCase {
             .url, URL(string: "https://omdbapi.com/?apiKey=f82a83aa&s=Batman&type=series"))
         XCTAssertEqual(MoviesAPI.movies(imdbId: "tt0145487").url,
                        URL(string: "https://omdbapi.com/?apiKey=f82a83aa&i=tt0145487"))
+        
     }
     func testExample() throws {
         // This is an example of a functional test case.

@@ -11,8 +11,13 @@ import SwiftUI
 class MovieListViewModel: ObservableObject {
     @Published var viewData = MovieListViewData()
     
+    var client : ServiceApi
+    init(client:ServiceApi){
+        self.client = client
+    }
+    
     func downloadMovies(search: String, contentType: String? = nil) { 
-        DownloaderClient.downloadMovies(search: search, contentType: contentType) { result in
+        client.downloadMovies(search: search, contentType: contentType) { result in
             switch result {
             case .success(let movieList):
                 if let movieList = movieList {
@@ -36,3 +41,10 @@ class MovieListViewModel: ObservableObject {
         viewData.searchText = ""
     }
 }
+
+
+
+
+
+
+
