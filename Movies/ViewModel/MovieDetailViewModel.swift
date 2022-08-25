@@ -19,13 +19,14 @@ class MovieDetailViewModel: ObservableObject {
         _movieDetailData = Published(initialValue: MovieDetailViewData(imdbId:imdbId))
         self.service = service
     }
-    func getMovieDetails(imdbId: String) {
+    func getMovieDetails() {
+        let imdbId = movieDetailData.imdbId
         service.downloadMovieDetails(imdbId: imdbId) { (result) in
             switch result {
             case .failure(let error) :
                 print(error)
             case .success(let movieDetail):
-                DispatchQueue.main.async {
+                guaranteeMainThread {
                     self.movieDetailData.movieDetails = movieDetail
                 }
             }

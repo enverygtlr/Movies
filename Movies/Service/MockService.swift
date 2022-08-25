@@ -19,7 +19,9 @@ final class MockService : ServiceApi {
     }
     
     func downloadMovieDetails(imdbId: String, completion: @escaping (Result<MovieDetailModel, DownloaderError>) -> Void) {
+         let movie = MovieDetailModel(title: "Mock", year: "2000", genre: "", director: "", writer: "", actors: "", plot: "", awards: "", poster: "", metascore: "", imdbRating: "4.6", imdbId: "e4mr5")
         
+        completion(.success(movie))
     }
     
     

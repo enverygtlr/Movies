@@ -44,7 +44,7 @@ struct MovieListView: View {
                         ForEach(data.movieList, id: \.self) { movie in
 
                             NavigationLink(
-                                destination: MovieDetailWrapperView(imdbId: movie.imdbID, service: client),
+                                destination: MovieDetailWrapperView(imdbId: movie .imdbID, service: client),
                                 label: {
                                     MovieRow(movie: movie)
                                 }).accessibilityIdentifier("navLink")

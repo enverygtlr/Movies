@@ -21,7 +21,7 @@ class MovieListViewModel: ObservableObject {
             switch result {
             case .success(let movieList):
                 if let movieList = movieList {
-                    DispatchQueue.main.async {
+                   guaranteeMainThread{
                         self.viewData.movieList = movieList
                     }
                 }
