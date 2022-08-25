@@ -9,17 +9,32 @@ import XCTest
 @testable import Movies
 
 class MoviesViewModelUnitTest: XCTestCase {
-
-    func testDownloadMovies() {
-      
-        let mockService = MockService()
-        let viewModel = MovieListViewModel(client: mockService)
+    
+    private var mockService : MockService!
+    private var sut : MovieListViewModel!
+    
+    override func setUpWithError() throws {
         
-        viewModel.downloadMovies(search: "")
-        sleep(3)
-        XCTAssertGreaterThan(viewModel.viewData.movieList.count, 0)
+         mockService = MockService()
+         sut = MovieListViewModel(client: mockService)
+        try super.setUpWithError()
+        
+    }
+    override func tearDownWithError() throws {
+        mockService = nil
+        sut = nil
+        try super.tearDownWithError()
+    }
+    func testDownloadMovies() {
+    
+        sut.downloadMovies(search: "")
+        
+        XCTAssertGreaterThan(sut.viewData.movieList.count, 0)
+    }
+    
+    func testSearchFuncReturnError() {
         
         
     }
-
+    
 }

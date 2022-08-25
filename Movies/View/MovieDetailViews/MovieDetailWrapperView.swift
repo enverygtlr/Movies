@@ -20,7 +20,7 @@ struct MovieDetailWrapperView: View {
     var body: some View {
         VStack {
             DetailView(data: detailViewModel.movieDetailData, getMovieDetails: { imdbId in
-                detailViewModel.getMovieDetails(imdbId: imdbId)
+                detailViewModel.getMovieDetails()
             })
         }
     }
