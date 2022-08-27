@@ -9,10 +9,9 @@ import Foundation
 
 public class DownloaderClient : ServiceApi {
      public  func downloadMovies (
-    search: String? = nil,
-    contentType: String? = nil,
+    requestDTO: MovieRequestDTO,
     completion: @escaping (Result<[Movie]?, DownloaderError>) -> Void ) {
-        guard let url = MoviesAPI.movies(search: search, contentType: contentType).url else {
+        guard let url = MoviesAPI.movies(search: requestDTO.search, contentType: requestDTO.contentType).url else {
             return completion(.failure(.wrongUrl))
         }
         print("URL: \(url)")

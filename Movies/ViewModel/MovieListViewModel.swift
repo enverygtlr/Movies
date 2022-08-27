@@ -17,7 +17,7 @@ class MovieListViewModel: ObservableObject {
     }
     
     func downloadMovies(search: String, contentType: String? = nil) { 
-        client.downloadMovies(search: search, contentType: contentType) { result in
+        client.downloadMovies(requestDTO: MovieRequestDTO.init(search: search, contentType: contentType ?? "")) { result in
             switch result {
             case .success(let movieList):
                 if let movieList = movieList {

@@ -10,8 +10,7 @@ import Foundation
 public protocol ServiceApi {
     
     func downloadMovies (
-        search: String?,
-        contentType: String? ,
+        requestDTO: MovieRequestDTO,
         completion: @escaping (Result<[Movie]?, DownloaderError>) -> Void )
     
     
